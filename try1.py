@@ -1,8 +1,9 @@
 from bs4 import BeautifulSoup
 import requests
 
+url = input("Enter url :")
+print(" This is the website link that you entered", url)
 
-url = "https://www.amazon.in/Sony-WH-XB910N-Cancelling-Headphones-transactions/dp/B09CG2P4Z2/?_encoding=UTF8&content-id=amzn1.sym.1283f517-922c-41ca-ab35-5002e1091e9b&ref_=pd_gw_pd_pss_gwp_d_0&th=1"
 # pg = requests.get("https://www.amazon.in/s?k=headphones&ref=nb_sb_noss")
 
 headers = {
@@ -16,7 +17,19 @@ cnt = pg.content
 soup = BeautifulSoup(cnt, 'html.parser')
 
 
-headline = soup.find_all('div', class_="a-section a-spacing-none", id="titleSection")
-print(headline)
-for title in headline:
-    print(title.find('span').get_text())
+# headline = soup.find_all('div', class_="a-section a-spacing-none", id="titleSection")
+# print(headline)
+# for title in headline:
+#     print(title.find('span').get_text())
+title = soup.find('span', class_='a-size-large product-title').text
+price = soup.find('span', class_='a-price a-color-price').text
+rating = soup.find('span', class_='a-icon-alt').text
+number_of_reviews = soup.find('span', class_='a-size-small a-color-secondary').text
+
+    
+print("title :",title)
+print('price :', price)
+print('rating:', rating)
+print('number_of_reviews:',number_of_reviews)
+    
+
