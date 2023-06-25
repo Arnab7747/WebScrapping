@@ -18,6 +18,7 @@ price_list = []
 review_list = []
 
 headline = soup.find_all('div', class_='a-section a-spacing-none a-spacing-top-small s-title-instructions-style')
+print(headline)
 for title in headline:
     header = title.h2.text
     header_list.append(header)
